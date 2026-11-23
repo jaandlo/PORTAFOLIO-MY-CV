@@ -1,165 +1,431 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portafolio | Jaandlo</title>
+
+    <!-- 1.  Hoja de estilos original-->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- 2. Biblioteca de estilización: Bootstrap 5.3 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- 3. Fuentes originales + Tipografías Editorial-Tech -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Rajdhani:wght@500;700&family=Roboto:wght@300;400;700&family=Syne:wght@700;800&display=swap"
+        rel="stylesheet">
 
-    <!-- Encabezado -->
-    <header>
-        <div class="brand">JAANDLO <span>DEV</span></div>
+    <!-- 4. Personalización Editorial-Tech sobre Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap-custom.css">
+
+    <!-- Iconos Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-tech-grid">
+
+    <!-- Fondo animado de red geométrica -->
+    <canvas id="network-canvas" class="position-fixed top-0 start-0 w-100 h-100 z-0 pe-none"></canvas>
+
+    <!-- Luz ambiental siguiendo el cursor -->
+    <div id="spotlight" class="cursor-spotlight d-none d-md-block"></div>
+
+    <!-- Encabezado y Navegación Originales integrados con Navbar de Bootstrap -->
+    <!-- Encabezado y Navegación Originales integrados con Navbar de Bootstrap -->
+    <header class="sticky-top z-3">
+        <nav class="navbar navbar-expand-md navbar-dark navbar-editorial py-3">
+            <div class="container">
+                <a href="#inicio" class="brand navbar-brand d-flex flex-column m-0 text-white text-decoration-none">
+                    <span class="d-flex align-items-center gap-2 font-display fs-5 lh-1">
+                        <span class="status-dot"></span>
+                        <span>JAANDLO <span class="text-neon">DEV</span></span>
+                    </span>
+                    <span class="text-secondary text-uppercase mt-1"
+                        style="font-size: 0.62rem; letter-spacing: 0.14em; padding-left: 1.15rem;">
+                        UTP Pereira • 5to Semestre • Portafolio 2026
+                    </span>
+                </a>
+
+                <button class="navbar-toggler border-secondary" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menú">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="mainNav">
+                    <ul class="nav-links navbar-nav align-items-md-center gap-md-4 pt-3 pt-md-0 list-unstyled m-0">
+                        <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#habilidades">Habilidades</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#formacion">Formación</a></li>
+                        <li class="nav-item mt-2 mt-md-0">
+                            <a class="btn btn-neon-primary px-4 py-2" href="#contacto">Contacto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
-    <!-- Navegación -->
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#sobre-mi">Sobre mí</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#proyectos">Proyectos</a></li>
-            <li><a href="#formacion">Formación</a></li>
-        </ul>
-    </nav>
+    <!-- Contenedor Principal (Misma estructura de Article y Aside) -->
+    <div class="content-wrapper container position-relative z-1 py-4 py-md-5">
 
-    <!-- Contenedor Principal (Layout de Article y Aside) -->
-    <div class="content-wrapper">
-        
-        <article>
+        <article class="d-flex flex-column gap-5">
+
             <!-- Sección Hero -->
-            <section id="inicio" class="hero section-panel">
-                <div class="hero-content">
-                    <h1>Hola, soy Andrés López, <br>pero puedes llamarme <span class="accent">Jaandlo</span></h1>
-                    <h2>Desarrollador de Software en formación</h2>
-                    <p>Soy estudiante de 5to semestre en Tecnología en desarrollo de Software en la Universidad Tecnológica de Pereira y aspirante a ser el mejor desarrollador Backend y Frontend aprendiendo de las nuevas tecnologías.</p>
-                    <div class="hero-buttons">
-                        <a href="#proyectos" class="btn btn-primary">Explorar Proyectos</a>
-                        <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            <!-- Sección Hero -->
+            <section id="inicio" class="hero section-panel bg-tray-grid rounded-4 p-4 p-md-5 d-block">
+                <div class="row align-items-center g-4">
+                    <div class="hero-content col-12 col-lg-8 text-center text-lg-start">
+                        <span class="font-editorial text-neon fs-4 d-block mb-1">Software &amp; Desarrollo</span>
+                        <h1 class="font-display text-white mb-3"
+                            style="font-size: clamp(1.7rem, 3.8vw, 2.8rem); line-height: 1.2;">
+                            Hola, soy Andrés López, <br>pero puedes llamarme <span
+                                class="accent text-neon">Jaandlo</span>
+                        </h1>
+                        <h2 class="fs-5 text-light fw-semibold mb-3">Desarrollador de Software en formación</h2>
+                        <p class="text-secondary lh-lg mb-4">
+                            Soy estudiante de 5to semestre en Tecnología en desarrollo de Software en la Universidad
+                            Tecnológica de Pereira y aspirante a ser el mejor desarrollador Backend y Frontend
+                            aprendiendo de las nuevas tecnologías.
+                        </p>
+                        <div
+                            class="hero-buttons d-flex flex-column flex-sm-row justify-content-center justify-content-lg-start gap-3">
+                            <a href="#proyectos" class="btn btn-neon-primary">Explorar Proyectos</a>
+                            <a href="#contacto" class="btn btn-secondary btn-neon-outline">Contactar</a>
+                        </div>
                     </div>
-                </div>
-                <div class="hero-image">
-                    <img src="img/profile.jpg.jpeg" alt="Foto de Andrés López" class="profile-img">
+
+                    <div class="hero-image col-12 col-lg-4 text-center">
+                        <div class="position-relative d-inline-block">
+                            <img src="img/profile.jpeg" alt="Foto de Andrés López"
+                                class="profile-img rounded-4 border border-2 border-light border-opacity-25 shadow-lg object-fit-cover"
+                                style="width: 210px; height: 210px;">
+                            <span
+                                class="badge rounded-pill position-absolute bottom-0 end-0 translate-middle-y px-3 py-2 fw-bold text-uppercase"
+                                style="background-color: #29ED22 !important; color: #0B0C0E !important; font-size: 0.68rem;">
+                                5° Semestre
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </section>
 
             <!-- Sección Sobre Mí -->
-            <section id="sobre-mi" class="about section-panel">
-                <h2>Sobre <span class="accent">Mí</span></h2>
-                <div class="about-text">
-                    <p>Soy un joven extrovertido que aspira a grandes metas agarrado de la mano de Jesús. Como estudiante de desarrollo de software, mi pasión es aprender nuevas tecnologías (como arquitecturas modernas, bases de datos avanzadas y diseño UI/UX) y aprender a que la IA sea mi aliada.</p>
-                    <p>Estoy aquí para plasmar en un software cada idea creativa de cualquier tipo de usuario. Mi visión es ser un desarrollador master que no tenga impedimentos para resolver cualquier tipo de reto proporcionado y ofrecer una buena experiencia de usuario.</p>
+            <section id="sobre-mi" class="about section-panel bg-tray-grid rounded-4 p-4 p-md-5">
+                <h2 class="font-display fs-2 text-uppercase mt-1 mb-4">Sobre <span class="accent text-neon">Mí</span>
+                </h2>
+                <div class="about-text text-secondary lh-lg">
+                    <p>Soy un joven extrovertido que aspira a grandes metas agarrado de la mano de Jesús. Como
+                        estudiante de desarrollo de software, mi pasión es aprender nuevas tecnologías (como
+                        arquitecturas modernas, bases de datos avanzadas y diseño UI/UX) y aprender a que la IA sea mi
+                        aliada.</p>
+                    <p class="mb-0">Estoy aquí para plasmar en un software cada idea creativa de cualquier tipo de
+                        usuario. Mi visión es ser un desarrollador master que no tenga impedimentos para resolver
+                        cualquier tipo de reto proporcionado y ofrecer una buena experiencia de usuario.</p>
                 </div>
             </section>
 
             <!-- Sección Habilidades -->
-            <section id="habilidades" class="skills section-panel">
-                <h2>Habilidades <span class="accent">Técnicas</span></h2>
-                <div class="grid-cards">
-                    <div class="card">
-                        <h3>HTML5</h3>
-                        <p>Estructuración semántica y accesible de interfaces web.</p>
+            <section id="habilidades" class="skills section-panel rounded-4 p-4 p-md-5"
+                style="background-color: #14161A; border: 1px solid rgba(255,255,255,0.1);">
+                <h2 class="font-display fs-2 text-uppercase mt-1 mb-4">Habilidades <span
+                        class="accent text-neon">Técnicas</span></h2>
+
+                <div class="grid-cards row g-3">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="layout" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">HTML5</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Estructuración semántica y accesible de interfaces web.
+                            </p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>CSS3</h3>
-                        <p>Diseño responsivo, animaciones y maquetación con Flexbox y Grid.</p>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="layers" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">CSS3 &amp; Bootstrap</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Diseño responsivo, animaciones y maquetación con
+                                Flexbox, Grid y Bootstrap 5.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Java</h3>
-                        <p>Desarrollo de lógica backend y estructuración robusta de aplicaciones.</p>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="coffee" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">Java</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Desarrollo de lógica backend y estructuración robusta de
+                                aplicaciones.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>C</h3>
-                        <p>Fundamentos de programación, manejo de memoria y algoritmos.</p>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="terminal" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">C</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Fundamentos de programación, manejo de memoria y
+                                algoritmos.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Bases de Datos</h3>
-                        <p>Diseño y gestión de modelos de datos eficientes e integrales.</p>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="database" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">Bases de Datos</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Diseño y gestión de modelos de datos eficientes e
+                                integrales.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>POO</h3>
-                        <p>Programación Orientada a Objetos para código modular y escalable.</p>
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div
+                            class="card h-100 bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <i data-lucide="boxes" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">POO</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Programación Orientada a Objetos para código modular y
+                                escalable.</p>
+                        </div>
                     </div>
-                    <div class="card">
-                        <h3>Git & GitHub</h3>
-                        <p>Control de versiones y trabajo colaborativo en repositorios.</p>
+                    <div class="col-12">
+                        <div
+                            class="card bg-dark bg-opacity-50 border border-secondary border-opacity-25 rounded-4 p-3 text-white skill-card-hover">
+                            <div class="d-flex align-items-center gap-2 mb-1">
+                                <i data-lucide="git-branch" class="text-neon" style="width: 18px;"></i>
+                                <h3 class="font-display fs-6 m-0 text-uppercase">Git &amp; GitHub</h3>
+                            </div>
+                            <p class="text-secondary small m-0">Control de versiones y trabajo colaborativo en
+                                repositorios.</p>
+                        </div>
                     </div>
                 </div>
             </section>
 
             <!-- Sección Proyectos -->
-            <section id="proyectos" class="projects section-panel">
-                <h2>Proyectos <span class="accent">Destacados</span></h2>
-                <div class="grid-cards projects-grid">
-                    <div class="card project-card">
-                        <div class="project-image">Proyecto 1</div>
-                        <h3>Sistema de Gestión</h3>
-                        <p>Aplicación de consola para la gestión de inventarios y usuarios.</p>
-                        <span class="tech-tag">Java</span> <span class="tech-tag">POO</span>
-                        <div class="project-links">
-                            <a href="#" class="btn btn-small">Código Fuente</a>
+            <section id="proyectos" class="projects section-panel bg-tray-grid rounded-4 p-4 p-md-5">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3 mb-4">
+                    <div>
+                        
+                        <h2 class="font-display fs-2 text-uppercase m-0">Proyectos <span
+                                class="accent text-neon">Destacados</span></h2>
+                    </div>
+
+                    <!-- Filtros interactivos -->
+                    <div id="filter-buttons" class="d-flex flex-wrap gap-2">
+                        <button data-filter="all"
+                            class="btn btn-sm rounded-pill px-3 py-2 fw-bold text-uppercase filter-btn active"
+                            style="font-size: 0.72rem;">Todos (03)</button>
+                        <button data-filter="web"
+                            class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 fw-bold text-uppercase text-light filter-btn"
+                            style="font-size: 0.72rem;">Web UI</button>
+                        <button data-filter="software"
+                            class="btn btn-sm btn-outline-secondary rounded-pill px-3 py-2 fw-bold text-uppercase text-light filter-btn"
+                            style="font-size: 0.72rem;">Java &amp; POO</button>
+                    </div>
+                </div>
+
+                <div class="grid-cards projects-grid row g-4">
+                    <!-- Proyecto 1 -->
+                    <div class="col-12 col-md-4 project-item" data-category="software">
+                        <div class="card project-card card-project h-100 p-3 shadow">
+                            <img src="img/gestor.jpeg" alt="Proyecto Sistema de Gestión"
+                                class="project-image card-img-top card-project-img mb-3">
+                            <div class="card-body p-1 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="mb-2 d-flex gap-1">
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">Java</span>
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">POO</span>
+                                    </div>
+                                    <h3 class="font-display fs-5 mb-2">Sistema de Gestión</h3>
+                                    <p class="text-secondary small">Aplicación de consola para la gestión de inventarios
+                                        y usuarios.</p>
+                                </div>
+                                <div class="project-links pt-3 mt-3 border-top border-dark border-opacity-10">
+                                    <a href="https://github.com/jaandlo/GESTOR-DE-PEDIDOS.git" target="_blank"
+                                        class="btn btn-small btn-dark btn-sm rounded-pill px-3 fw-bold">Código
+                                        Fuente</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card project-card">
-                        <img src="img/landing page.jpeg" alt="Proyecto Landing Page Tecnológica" class="project-image">
-                        <h3>Landing Page Tecnológica</h3>
-                        <p>Diseño estático moderno y responsivo para una startup ficticia.</p>
-                        <span class="tech-tag">HTML5</span> <span class="tech-tag">CSS3</span>
-                        <div class="project-links">
-                            <a href="https://github.com/jaandlo/PORTAFOLIO-MY-CV.git" target="_blank" class="btn btn-small">Código Fuente</a>
-                            <a href="https://jaandlo.github.io/PORTAFOLIO-MY-CV" target="_blank" class="btn btn-small btn-outline">Demo</a>
+
+                    <!-- Proyecto 2 -->
+                    <div class="col-12 col-md-4 project-item" data-category="web">
+                        <div class="card project-card card-project h-100 p-3 shadow">
+                            <img src="img/landing-page.jpeg" alt="Proyecto Landing Page Tecnológica"
+                                class="project-image card-img-top card-project-img mb-3">
+                            <div class="card-body p-1 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="mb-2 d-flex gap-1">
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">HTML5</span>
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">CSS3</span>
+                                    </div>
+                                    <h3 class="font-display fs-5 mb-2">Landing Page Tecnológica</h3>
+                                    <p class="text-secondary small">Diseño estático moderno y responsivo para una
+                                        startup ficticia.</p>
+                                </div>
+                                <div
+                                    class="project-links pt-3 mt-3 border-top border-dark border-opacity-10 d-flex gap-2">
+                                    <a href="https://github.com/jaandlo/jaandlo.git" target="_blank"
+                                        class="btn btn-small btn-dark btn-sm rounded-pill px-3 fw-bold">Código
+                                        Fuente</a>
+                                    <a href="https://jaandlo.github.io/jaandlo" target="_blank"
+                                        class="btn btn-small btn-outline-dark btn-sm rounded-pill px-3 fw-bold">Demo</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card project-card">
-                        <img src="img/coca-cola_web.jpeg" alt="Proyecto Coca-Cola Web" class="project-image">
-                        <h3>COCA-COLA WEB</h3>
-                        <p>Página publicitaria con interfaz gráfica interactiva de una forma simple.</p>
-                        <span class="tech-tag">HTML5</span> <span class="tech-tag">CSS3</span>
-                        <div class="project-links">
-                            <a href="https://github.com/jaandlo/Coca-Cola.git" target="_blank" class="btn btn-small">Código Fuente</a>
+
+                    <!-- Proyecto 3 -->
+                    <div class="col-12 col-md-4 project-item" data-category="web">
+                        <div class="card project-card card-project h-100 p-3 shadow">
+                            <img src="img/coca-cola_web.jpeg" alt="Proyecto Coca-Cola Web"
+                                class="project-image card-img-top card-project-img mb-3">
+                            <div class="card-body p-1 d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="mb-2 d-flex gap-1">
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">HTML5</span>
+                                        <span
+                                            class="tech-tag badge rounded-pill bg-dark bg-opacity-10 text-dark">CSS3</span>
+                                    </div>
+                                    <h3 class="font-display fs-5 mb-2">COCA-COLA WEB</h3>
+                                    <p class="text-secondary small">Página publicitaria con interfaz gráfica interactiva
+                                        de una forma simple.</p>
+                                </div>
+                                <div class="project-links pt-3 mt-3 border-top border-dark border-opacity-10">
+                                    <a href="https://github.com/jaandlo/Coca-Cola.git" target="_blank"
+                                        class="btn btn-small btn-dark btn-sm rounded-pill px-3 fw-bold">Código
+                                        Fuente</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- Sección Formación -->
-            <section id="formacion" class="academic section-panel">
-                <h2>Formación <span class="accent">Académica</span></h2>
-                <div class="timeline">
+            <section id="formacion" class="academic section-panel rounded-4 p-4 p-md-5"
+                style="background-color: #14161A; border: 1px solid rgba(255,255,255,0.1);">
+                
+                <h2 class="font-display fs-2 text-uppercase mt-1 mb-4">Formación <span
+                        class="accent text-neon">Académica</span></h2>
+                <div class="timeline border-start border-2 ps-4" style="border-color: #29ED22 !important;">
                     <div class="timeline-item">
-                        <h3>Tecnología en Desarrollo de Software</h3>
-                        <h4>Universidad Tecnológica de Pereira (UTP)</h4>
-                        <p>Cursando actualmente el 5to semestre. Enfoque en arquitectura de software, bases de datos y desarrollo Fullstack.</p>
+                        <h3 class="font-display fs-4 text-white mb-1">Tecnología en Desarrollo de Software</h3>
+                        <h4 class="fs-6 text-neon fw-bold mb-2">Universidad Tecnológica de Pereira (UTP)</h4>
+                        <p class="text-secondary m-0">Cursando actualmente el 5to semestre. Enfoque en arquitectura de
+                            software, bases de datos y desarrollo Fullstack.</p>
                     </div>
                 </div>
             </section>
+
         </article>
 
-        <!-- Barra Lateral (Contacto) -->
-        <aside id="contacto" class="section-panel">
-            <h2>Contacto</h2>
-            <p>¿Tienes un proyecto en mente o una oportunidad profesional? ¡Hablemos!</p>
-            <div class="contact-info">
-                <p><strong>WhatsApp:</strong> <a href="tel:+573028335815">3028335815</a></p>
-                <p><strong>Email:</strong> <a href="mailto:jairo.lopez@utp.edu.co">jairo.lopez@utp.edu.co</a></p>
-            </div>
-            <div class="social-links">
-                <a href="#" class="btn btn-outline" target="_blank">LinkedIn</a>
-                <a href="#" class="btn btn-outline" target="_blank">GitHub</a>
+        <!-- Barra Lateral / Sección Contacto (Conservando etiqueta <aside> original + Formulario Bootstrap) -->
+        <aside id="contacto" class="section-panel bg-tray-grid rounded-4 p-4 p-md-5 mt-5">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-12 col-md-6">
+                    
+                    <h2 class="font-display fs-1 text-uppercase mb-3">Contacto</h2>
+                    <p class="text-secondary lh-lg mb-4">¿Tienes un proyecto en mente o una oportunidad profesional?
+                        ¡Hablemos!</p>
+
+                    <div class="contact-info d-flex flex-column gap-3 small mb-4">
+                        <p class="m-0 d-flex align-items-center gap-2">
+                            <i data-lucide="phone" class="text-neon" style="width: 18px;"></i>
+                            <strong class="text-white">Whatsapp:</strong>
+                            <a href="http://wa.me/573028335815" target="_blank"
+                                class="text-neon text-decoration-none fw-bold">Contactar por WhatsApp</a>
+                        </p>
+                        <p class="m-0 d-flex align-items-center gap-2">
+                            <i data-lucide="mail" class="text-neon" style="width: 18px;"></i>
+                            <strong class="text-white">Email:</strong>
+                            <a href="mailto:jairo.lopez@utp.edu.co"
+                                class="text-light text-decoration-none">jairo.lopez@utp.edu.co</a>
+                        </p>
+                    </div>
+
+                    <div class="social-links d-flex flex-wrap gap-2">
+                        <a href="https://www.linkedin.com/in/jairo-andres-lopez25"
+                            class="btn btn-outline btn-neon-outline btn-sm" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/jaandlo" class="btn btn-outline btn-neon-outline btn-sm"
+                            target="_blank">GitHub</a>
+                        <a href="https://instagram.com/jaandlo_" class="btn btn-outline btn-neon-outline btn-sm"
+                            target="_blank">Instagram</a>
+                    </div>
+                </div>
+
+                <!-- Formulario interactivo Bootstrap + Web3Forms -->
+                <div class="col-12 col-md-6">
+                    <form id="contact-form" class="p-4 rounded-4"
+                        style="background-color: rgba(11,12,14,0.9); border: 1px solid rgba(255,255,255,0.1);">
+                        <!-- PEGA AQUÍ TU ACCESS KEY DE WEB3FORMS -->
+                        <input type="hidden" name="access_key" value="86a17644-9dd4-4ec1-93af-da31e20e6c8e">
+                        <input type="hidden" name="subject" value="Nuevo mensaje desde Portafolio Jaandlo">
+
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label text-uppercase fw-bold text-secondary"
+                                style="font-size: 0.7rem; letter-spacing: 0.12em;">Tu Nombre</label>
+                            <input type="text" class="form-control form-control-dark" id="nombre" name="name" required
+                                placeholder="Ej. Juliana Gómez">
+                        </div>
+                        <div class="mb-3">
+                            <label for="correo" class="form-label text-uppercase fw-bold text-secondary"
+                                style="font-size: 0.7rem; letter-spacing: 0.12em;">Tu Correo</label>
+                            <input type="email" class="form-control form-control-dark" id="correo" name="email" required
+                                placeholder="correo@ejemplo.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="mensaje" class="form-label text-uppercase fw-bold text-secondary"
+                                style="font-size: 0.7rem; letter-spacing: 0.12em;">Mensaje</label>
+                            <textarea class="form-control form-control-dark" id="mensaje" name="message" rows="3"
+                                required placeholder="Cuéntame sobre tu proyecto..."></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn btn-neon-primary w-100 py-3 font-display">
+                            Enviar Mensaje
+                        </button>
+                        <p id="form-feedback" class="d-none text-center small fw-semibold mt-3 mb-0"></p>
+                    </form>
+                </div>
             </div>
         </aside>
 
     </div>
 
-    <!-- Pie de página -->
-    <footer>
-        <p>&copy; 2026 Andrés López (Jaandlo). Desarrollador en formación.</p>
-        <p>Construyendo el futuro, línea por línea.</p>
+    <!-- Pie de página original conservado -->
+    <footer
+        class="position-relative z-1 border-top border-secondary border-opacity-25 py-4 text-center text-secondary small">
+        <div class="container">
+            <p class="mb-1 text-white">&copy; 2026 Andrés López (Jaandlo). Desarrollador en formación.</p>
+            <p class="m-0 font-editorial text-neon">Construyendo el futuro, línea por línea.</p>
+        </div>
     </footer>
 
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript propio -->
+    <script src="js/main.js"></script>
 </body>
+
 </html>

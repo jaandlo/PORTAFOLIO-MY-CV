@@ -1,0 +1,259 @@
+/* ==========================================================================
+   MODERNIZACIÓN EDITORIAL-TECH SOBRE BOOTSTRAP 5
+   Conserva compatibilidad con css/styles.css original
+   ========================================================================== */
+
+:root {
+    --bs-primary: #29ED22;
+    --bs-primary-rgb: 41, 237, 34;
+    --bs-body-bg: #0B0C0E;
+    --bs-body-color: #F3F4F6;
+    --bs-font-sans-serif: 'Plus Jakarta Sans', sans-serif;
+    --obsidian: #0B0C0E;
+    --surface: #14161A;
+    --card-light: #E8EAED;
+    --neon: #29ED22;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: var(--obsidian) !important;
+    color: var(--bs-body-color) !important;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Fondo técnico con cuadrícula */
+.bg-tech-grid {
+    background-color: #0B0C0E;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+}
+
+.bg-tray-grid {
+    background-color: #181A20;
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85), inset 0 1px 1px rgba(255, 255, 255, 0.12);
+}
+
+/* Tipografías Editorial + Display */
+.font-display {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+}
+
+.font-editorial {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+.text-neon {
+    color: var(--neon) !important;
+}
+
+/* Halo de luz ambiental que sigue el cursor */
+.cursor-spotlight {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: radial-gradient(
+        150px circle at var(--x, 50%) var(--y, 50%),
+        rgba(41, 237, 34, 0.14),
+        transparent 80%
+    );
+}
+
+/* Navbar Bootstrap personalizado */
+.navbar-editorial {
+    background-color: rgba(11, 12, 14, 0.88) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-editorial .nav-link {
+    color: #9CA3AF !important;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.navbar-editorial .nav-link:hover {
+    color: var(--neon) !important;
+}
+
+/* Título Hero Fluido (se adapta perfecto a celular y PC) */
+.hero-super-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.75rem, 8.5vw, 6.8rem);
+    line-height: 1;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.hero-script-badge {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3.8vw, 3rem);
+    color: var(--neon);
+    display: block;
+    margin-bottom: -0.4rem;
+    transform: rotate(-2deg);
+    position: relative;
+    z-index: 2;
+}
+
+/* Botones Bootstrap personalizados con resplandor Neón #29ED22 */
+.btn-neon-primary {
+    background-color: #FFFFFF;
+    color: #0B0C0E;
+    border: none;
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.6rem;
+    border-radius: 50rem;
+    transition: all 0.3s ease;
+}
+
+.btn-neon-primary:hover, .btn-neon-primary:focus {
+    background-color: var(--neon) !important;
+    color: #0B0C0E !important;
+    box-shadow: 0 0 25px rgba(41, 237, 34, 0.65);
+    transform: scale(1.04);
+}
+
+.btn-neon-outline {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.75rem 1.6rem;
+    border-radius: 50rem;
+    transition: all 0.3s ease;
+}
+
+.btn-neon-outline:hover {
+    background-color: var(--neon) !important;
+    color: #0B0C0E !important;
+    border-color: var(--neon) !important;
+    box-shadow: 0 0 25px rgba(41, 237, 34, 0.55);
+    transform: scale(1.04);
+}
+
+/* Botones de filtro */
+.filter-btn.active {
+    background-color: #FFFFFF !important;
+    color: #0B0C0E !important;
+    border-color: #FFFFFF !important;
+}
+
+/* Tarjetas de Proyectos (Bootstrap Card Component) */
+.card-project {
+    background-color: var(--card-light) !important;
+    color: #0B0C0E !important;
+    border: none !important;
+    border-radius: 1.25rem !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-project:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+}
+
+.card-project-img {
+    height: 185px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 0.85rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Tarjetas de Habilidades */
+.skill-pill {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.skill-pill:hover {
+    border-color: var(--neon);
+    transform: translateY(-2px);
+}
+
+/* Inputs del Formulario Bootstrap */
+.form-control-dark {
+    background-color: var(--surface) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #FFFFFF !important;
+    border-radius: 0.85rem !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.875rem !important;
+}
+
+.form-control-dark::placeholder {
+    color: #6B7280 !important;
+}
+
+.form-control-dark:focus {
+    border-color: var(--neon) !important;
+    box-shadow: 0 0 0 0.2rem rgba(41, 237, 34, 0.2) !important;
+}
+
+/* Animación pulso punto estado */
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+}
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--neon);
+    display: inline-block;
+    animation: pulseDot 2s infinite;
+}
+
+/* Neutralizar reglas rígidas del CSS base manteniendo la compatibilidad */
+.content-wrapper {
+    display: block !important;
+    max-width: 1140px !important;
+    margin: 0 auto !important;
+}
+
+.section-panel {
+    margin-bottom: 0 !important;
+}
+
+.skill-card-hover {
+    transition: border-color 0.3s ease, transform 0.25s ease;
+}
+
+.skill-card-hover:hover {
+    border-color: #29ED22 !important;
+    transform: translateY(-4px);
+}

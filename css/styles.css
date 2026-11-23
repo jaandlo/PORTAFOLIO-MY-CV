@@ -179,15 +179,20 @@ article {
     gap: 15px;
 }
 
-.image-placeholder {
+.profile-img {
     width: 250px;
     height: 250px;
-    background: linear-gradient(135deg, var(--metallic-dark), var(--bg-graphite));
-    border: 2px solid var(--steel);
+    object-fit: cover; /* Evita que tu foto se deforme o aplaste */
     border-radius: 50%;
-    box-shadow: 0 0 20px rgba(77, 163, 255, 0.1);
-    position: relative;
-    overflow: hidden;
+    border: 3px solid var(--steel);
+    box-shadow: 0 0 25px rgba(77, 163, 255, 0.15), inset 0 0 10px rgba(0,0,0,0.5);
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
+}
+
+.profile-img:hover {
+    transform: scale(1.02);
+    border-color: var(--silver);
+    box-shadow: 0 0 35px rgba(77, 163, 255, 0.3);
 }
 
 .image-placeholder::after {
@@ -422,23 +427,6 @@ footer {
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
     }
-}
-
-/* Estilo para la foto de perfil */
-.profile-img {
-    width: 250px;
-    height: 250px;
-    object-fit: cover; /* Evita que tu foto se deforme o aplaste */
-    border-radius: 50%;
-    border: 3px solid var(--steel);
-    box-shadow: 0 0 25px rgba(77, 163, 255, 0.15), inset 0 0 10px rgba(0,0,0,0.5);
-    transition: transform var(--transition-speed), border-color var(--transition-speed);
-}
-
-.profile-img:hover {
-    transform: scale(1.02);
-    border-color: var(--blue-accent);
-    box-shadow: 0 0 35px rgba(77, 163, 255, 0.3);
 }
 
 /* Estilo para las imágenes de los proyectos */
